@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        #con {
+            text-align: center;
+            padding: 20px;
+            flex: 1;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #0d6efd;
+            color: white;
+            padding: 20px 0;
+        }
+
+        .header img {
+            width: 100px;
+            height: auto;
+        }
+
+        .header div {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .welcome-animation {
+            font-size: 2em;
+            font-weight: bold;
+            color: #003366;
+            margin: 20px 0;
+            animation: fadeInOut 3s forwards;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .login-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .login-box h1 {
+            margin-bottom: 20px;
+        }
+
+        .input-field {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-field label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-field input, .input-field select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .submit-button {
+            background-color: #0d6efd;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #2108e3;
+        }
+
+        footer {
+            background-color: #0d6efd;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+        }
+        button {
+            width:77px;
+            height:41px;
+            background-color: #0d6efd;
+            border-radius: 10px;
+            color:white;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="con">
+        <div class="header">
+            <!-- <img src="static\1.jpeg" alt="logo"> -->
+            <div>Quaid-e-Azam University Islamabad</div> 
+        </div>
+        <div class="welcome-animation" id="welcome-animation">
+            Welcome to Qau System
+        </div>
+        <div class="login-box">
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+            <h1 id="mainheading">FYP ANALYSING SYSTEM</h1>
+
+            <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+                <div class="input-field">
+                    <label for="role">Role:</label>
+                    <select id="role" name="role">
+                        {% for d in designation1 %}
+                      <option value="{{ d.designationname }}">{{ d.designationname  }}</option>
+                        {% endfor %}
+    </select>
+                </div>
+                <div class="input-field">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-field">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <input type="submit" value="Login" class="submit-button">
+            </form>
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 Quaid-e-Azam University Islamabad
+        <br>
+        Made By IIT Qau Student
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const welcomeAnimation = document.getElementById("welcome-animation");
+            setTimeout(() => {
+                welcomeAnimation.style.opacity = "0";
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

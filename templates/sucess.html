@@ -1,0 +1,10 @@
+<!-- success.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Meeting Save Successfully!</h3>
+<p>Your content has been Saved. Thank you!</p>
+<a href="{% url 'marksheet' %}">View Group Average</a>
+<br>
+<a href="{% url 'add_marks' %}">Add Another group marks</a>
+{% endblock %}

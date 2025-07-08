@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container content mt-4">
+    <h2 class="mb-4">Add Marks</h2>
+
+    <!-- Messages Block -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Form Block -->
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Select Group:</label>
+            <select name="group" class="form-select" required>
+                {% for group in groups %}
+                    <option value="{{ group.id }}">{{ group.groupname }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Project Marks (1–5):</label>
+            <input type="number" name="project_marks" class="form-control" min="1" max="5" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Poster Marks (1–5):</label>
+            <input type="number" name="poster_marks" class="form-control" min="1" max="5" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Marks</button>
+    </form>
+</div>
+{% endblock %}

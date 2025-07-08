@@ -1,0 +1,87 @@
+
+ {% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <div class="row">
+     
+        <div class="col-md-12">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Welcome to Your Dashboard, {{ user_name }}!</h4>
+                </div>
+                <div class="card-body">
+                    <p class="lead">Here’s a quick overview of your activity and recent updates.</p>
+                    <a href="{% url 'success_page' %}" class="btn btn-outline-primary">Check Notifications</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Overview Cards Section -->
+        <div class="col-lg-4 col-md-6">
+            <div class="card text-white bg-success mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Total Projects Involved</h5>
+                </div>
+                <div class="card-body">
+                    <h2 class="display-4">{{ group }}</h2>
+                    <p>Projects completed successfully</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="card text-white bg-info mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">New Ideas</h5>
+                </div>
+                <div class="card-body">
+                    <h2 class="display-4">0</h2>
+                    <p>Tasks pending</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="card text-white bg-warning mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Messages</h5>
+                </div>
+                <div class="card-body">
+                    <h2 class="display-4">0</h2>
+                    <p>Unread messages</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Latest Activities Section -->
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-secondary text-white">
+                    <h5>Latest Activities</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Project Alpha - Completed</span>
+                            <span class="badge bg-success">Completed</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Design Review - Pending</span>
+                            <span class="badge bg-warning">Pending</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Project Beta - In Progress</span>
+                            <span class="badge bg-info">In Progress</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
